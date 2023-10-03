@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
+import IntensityBarChart from "./components/IntensityBarChart";
 
 function App() {
   const [data, setData] = useState(null);
@@ -21,9 +22,13 @@ function App() {
       });
   }, []);
 
-  console.log(data);
+  // console.log(data);
 
-  return <div className="App">appp</div>;
+  return (
+    <>
+      <IntensityBarChart data={data} />
+    </>
+  );
 }
 
 export default App;
