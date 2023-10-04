@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fonts {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}

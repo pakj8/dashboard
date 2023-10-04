@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
-import IntensityBarChart from "./components/IntensityBarChart";
 import LeftSlider from "./components/common/LeftSlider";
+import Navbar from "./components/Navbar/Navbar";
+import IntensityLikelihoodChart from "./components/Graphs/IntensityLikelihoodChart";
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [openLeftSlider, setOpenLeftSlider] = useState(false);
 
   useEffect(() => {
@@ -24,14 +25,18 @@ function App() {
       });
   }, []);
 
-  // console.log(data);
+  // useEffect(() => {
+  //   const mappedData = data?.map((data) => {
+  //     return data;
+  //   });
+  //   console.log(mappedData);
+  // }, [data]);
 
   return (
     <>
-      <IntensityBarChart data={data} />
-      <button onClick={() => setOpenLeftSlider(true)} className="border p-4">
-        Open
-      </button>
+      <Navbar setOpenLeftSlider={setOpenLeftSlider} />
+      <IntensityLikelihoodChart data={data} />
+
       {openLeftSlider && <LeftSlider setOpenLeftSlider={setOpenLeftSlider} />}
     </>
   );
