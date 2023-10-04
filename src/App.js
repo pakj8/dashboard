@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import IntensityBarChart from "./components/IntensityBarChart";
+import LeftSlider from "./components/common/LeftSlider";
 
 function App() {
   const [data, setData] = useState(null);
+  const [openLeftSlider, setOpenLeftSlider] = useState(false);
 
   useEffect(() => {
     axios
@@ -18,7 +20,7 @@ function App() {
         }
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error(error);
       });
   }, []);
 
@@ -27,6 +29,10 @@ function App() {
   return (
     <>
       <IntensityBarChart data={data} />
+      <button onClick={() => setOpenLeftSlider(true)} className="border p-4">
+        Open
+      </button>
+      {openLeftSlider && <LeftSlider setOpenLeftSlider={setOpenLeftSlider} />}
     </>
   );
 }
