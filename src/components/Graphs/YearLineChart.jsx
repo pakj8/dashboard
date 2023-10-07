@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
-function IntensityChart({ data }) {
+function YearLineChart({ data }) {
   const chartRef = useRef(null);
 
   useEffect(() => {
@@ -11,20 +11,20 @@ function IntensityChart({ data }) {
       chartRef.current.chart.destroy();
     }
 
-    const intensityData = data?.map((item) => item.intensity);
+    const yearData = data?.map((item) => item.year);
     const labels = data?.map((item, index) => `Data Point ${index + 1}`);
 
     chartRef.current.chart = new Chart(ctx, {
-      type: "pie",
+      type: "line",
       data: {
         labels: labels,
         datasets: [
           {
-            label: "Intensity",
-            data: intensityData,
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            borderColor: "rgba(75, 192, 192, 1)",
-            borderWidth: 1,
+            label: "Year",
+            data: yearData,
+            borderColor: "rgba(255, 99, 132, 1)",
+            borderWidth: 2,
+            fill: false,
           },
         ],
       },
@@ -50,4 +50,4 @@ function IntensityChart({ data }) {
   );
 }
 
-export default IntensityChart;
+export default YearLineChart;

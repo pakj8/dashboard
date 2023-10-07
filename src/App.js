@@ -4,6 +4,9 @@ import axios from "axios";
 import LeftSlider from "./components/common/LeftSlider";
 import Navbar from "./components/Navbar/Navbar";
 import IntensityLikelihoodChart from "./components/Graphs/IntensityLikelihoodChart";
+import LikelihoodRadarChart from "./components/Graphs/LikelihoodRadarChart";
+import RelevanceChart from "./components/Graphs/RelevanceChart";
+import YearLineChart from "./components/Graphs/YearLineChart";
 
 function App() {
   const [data, setData] = useState([]);
@@ -36,6 +39,9 @@ function App() {
     <>
       <Navbar setOpenLeftSlider={setOpenLeftSlider} />
       <IntensityLikelihoodChart data={data} />
+      <LikelihoodRadarChart data={data} />
+      <RelevanceChart data={data} />
+      <YearLineChart data={data} />
 
       {openLeftSlider && <LeftSlider setOpenLeftSlider={setOpenLeftSlider} />}
     </>
